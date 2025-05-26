@@ -1,6 +1,5 @@
 from langgraph.graph import StateGraph, END, MessagesState, START
 from langgraph.prebuilt import ToolNode
-from langchain_core.messages import ToolMessage
 from langchain.chat_models import init_chat_model
 from langchain.tools import tool
 import datetime
@@ -12,11 +11,11 @@ def get_current_time() -> dict:
     """Return the current UTC time in ISO‑8601 format."""
     return {"utc": datetime.datetime.utcnow().isoformat() + "Z"}
 
-key = os.getenv("OPENAI_API_KEY")
-# Tool executor
+key = os.getenv("OPENAI_API_KEY") # <--- add openAI api key
+
 tools = [get_current_time]
 tool_node = ToolNode([get_current_time])
-#tool_executor = ToolExecutor(tools)
+
 #Model init -->
 model = init_chat_model("openai:gpt-4.1", openai_api_key=key)
 model_with_tools = model.bind_tools([get_current_time])
