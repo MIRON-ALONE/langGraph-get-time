@@ -1,0 +1,10 @@
+openai>=1.23.2
+langchain-openai
+langgraph>=0.0.31
+pydantic>=2.4.1,<2.8
+httpx>=0.25.1,<0.28.0
+typing-extensions<=4.12.2
+langchain
+langgraph-cli
+langgraph-api
+uvicorn
